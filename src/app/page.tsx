@@ -1,113 +1,54 @@
-import Image from 'next/image'
+import Card from "@/components/card";
+import { addZerosToIncompleteRecord } from "@/utils/dataEditing";
+import { manaType } from "@/types/enums";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+	return (
+		<div className="p-3 grid grid-cols-5 gap-2">
+			<Card name="Set" cost={addZerosToIncompleteRecord(manaType, {"colorless": 2, "idealist": 1})} category="Set Theory" effects={[
+				{
+					categories: ["Activated", "Discard After"],
+					content: <>Choose two or more cards to <i>bind</i> together.</>
+				}
+			]} flavor="In the symphony of elements, harmony arises from the union of distinct notes. A set, a composition, a unity waiting to be woven into the tapestry of strategy." />
+			<Card name="Power Set" cost={addZerosToIncompleteRecord(manaType, {"colorless": 3, "idealist": 3})} category="Set Theory" effects={[
+				{
+					categories: ["Draw"],
+					content: <><i>Praeteramplify</i> a card by two until it gets discarded.</>
+				}
+			]} flavor="Within the boundless sphere of possibility, each subset weaves its unique narrative, and from the infinite combinations, emerges the strength of the all-encompassing whole." />
+			<Card name="Russell's Paradox" cost={addZerosToIncompleteRecord(manaType, {"colorless": 6, "idealist": 5, "positivist": 7})} category="Set Theory" effects={[
+				{
+					categories: ["Activated", "Discard After"],
+					content: <>A random card in play will be chosen. If it contains the ability to draw, summon, or transform into a card, it loses its abilities until the end of your turn. Otherwise, amplify the card with all your cards with the word &quot;paradox&quot; in its name.</>
+				},
+				{
+					categories: ["Restriction"],
+					content: <>The card can&apos;t target the same card more than once.</>
+				}
+			]} flavor="In the paradoxical dance of sets, inclusion may lead to exclusion, and the all-encompassing may crumble within its own definition." />
+			<Card name="Francisco Espoz y Mina" cost={addZerosToIncompleteRecord(manaType, {"pragmatist": 5})} category="Peninsular War" attack={5} defense={4} bgCover={true} effects={[
+				{
+					categories: ["After Turn"],
+					content: <>For every 5 cards in your hand, heal 1 defense.</>
+				},
+				{
+					categories: ["Conditional"],
+					content: <>If <i>Hit-and-Run Tactics</i> is applied to this card, increase attack by 2 and reduce defense by 1.</>
+				}
+			]} flavor="In the rugged terrain of resistance, Espoz y Mina's guerrilla tactics struck fear into the hearts of the invaders, a resilient leader in the fight for freedom." />
+			<Card name="Hit-and-Run Tactics" cost={addZerosToIncompleteRecord(manaType, {"colorless": 1, "pragmatist": 2})} category="War Tactics" bgCover={true} effects={[
+				{
+					categories: ["Activated", "Discard After"],
+					content: <>Choose a card in your hand to gain 2 attack and lose 1 defense, and also to target an opposing card without taking damage in return. In the next turn, sacrifice the card.</>
+				},
+			]} flavor="Strike quickly, fade into the shadows, and live to fight another day." />
+			<Card name="Bait-and-Switch" cost={addZerosToIncompleteRecord(manaType, {"colorless": 6, "pragmatist": 6})} category="Deceptive Marketing" bgCover={true} effects={[
+				{
+					categories: ["Activated", "Discard After"],
+					content: <>Choose a card in your hand to switch, and draw another card. If the card drawn is part of the same category as the card in your hand, you can play it in your turn without paying the mana cost. Otherwise, lose 2 health and lose that card.</>
+				},
+			]} flavor="Sometimes, the best move is to vanish momentarily." />
+		</div>
+	);
 }
