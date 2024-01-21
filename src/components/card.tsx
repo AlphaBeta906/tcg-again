@@ -11,10 +11,11 @@ type Props = {
 	flavor: string,
 	attack?: number,
 	defense?: number,
-	bgCover?: true
+	bgCover?: true,
+	topBgCover?: true
 }
 
-export default function Card({ name, cost, category, effects, flavor, attack, defense, bgCover }: Props) {
+export default function Card({ name, cost, category, effects, flavor, attack, defense, bgCover, topBgCover }: Props) {
 	// Mana Rendering
 	const defaultManaOrder: ManaType[] = [
 		"colorless",
@@ -51,16 +52,19 @@ export default function Card({ name, cost, category, effects, flavor, attack, de
 		"Draw": "emerald-600",
 		"Restriction": "slate-600",
 		"After Turn": "violet-500",
-		"Conditional": "orange-500"
+		"Conditional": "orange-500",
+		"Special Attack": "amber-500",
+		"Use Every 3 Turns": "red-800",
+		"Once Every Game": "orange-700"
 	};
 	const effectList: JSX.Element[] = [];
 
 	effects.map((element, index) => {
 		const categoryList: JSX.Element[] = [];
 
-		element.categories.map((element) => {
+		element.categories.map((element, index1) => {
 			categoryList.push(
-				<div key={`effect-${index}-${name}`} className={`p-1 text-white bg-${categoryLookup[element]} px-2 rounded-md text-[0.47rem]`}>{element}</div>
+				<div key={`category-${index1}-${name}`} className={`p-1 text-white bg-${categoryLookup[element]} px-2 rounded-md text-[0.47rem]`}>{element}</div>
 			);
 			return;
 		});
@@ -96,16 +100,16 @@ export default function Card({ name, cost, category, effects, flavor, attack, de
 			</div>
 			<div className="flex flex-col h-full w-full gap-2">
 				<div className={`h-[176px] w-full border-4 rounded border-${cardColor}-400 relative overflow-hidden box-border`}>
-					<div className={`${bgCover ? "" : "bg-white"} justify-center flex items-center h-full w-full bg-cover bg-center p-2`} style={{ backgroundImage: (bgCover ? `url("./img/${name.toLowerCase().replace(/ /g, "-")}.png")` : undefined )}} >
+					<div className={`${bgCover ? "" : "bg-white"} justify-center flex items-center h-full w-full bg-cover ${topBgCover ? "bg-top" : "bg-center"} p-2`} style={{ backgroundImage: (bgCover ? `url("./img/${name.toLowerCase().replace(/ /g, "-")}.png")` : undefined )}} >
 						{bgCover ? <div /> : <img src={`./img/${name.toLowerCase().replace(/ /g, "-")}.png`} className="object-contain w-full h-full" /> }
 					</div>
 				</div>
 				<div className={`h-[176px] w-full border-4 rounded border-${cardColor}-400 bg-white p-2`}>
-					<div className="h-full flex flex-col gap-2">
+					<div className="h-full flex flex-col gap-1">
 						<div className="h-3/4 overflow-auto">
 							{effectList}
 						</div>
-						<div className="h-1/4 pt-2 border-t border-t-black">
+						<div className="h-1/4 pt-1 border-t border-t-black">
 							<div className="text-[0.45rem] text-slate-700 italic">{flavor}</div>
 						</div>
 					</div>
