@@ -38,17 +38,9 @@ function CardWrapper({ element, index, animationFinishedState, hoveringState }: 
 
 		const target = event.currentTarget as HTMLElement;
 		const rect = target.getBoundingClientRect();
-		const center = {
-			x: target.offsetWidth/2,
-			y: target.offsetHeight/2
-		};
-		const intermediate = {
-			x: (event.clientX - center.x) - rect.left,
-			y: (event.clientY - center.y) - rect.top
-		};
 		const transform = {
-			x: Number((intermediate.x * 0.1 * ((intermediate.y - center.x) <= 0 ? -1 : 1)).toFixed(2)),
-			y: Number((intermediate.y * 0.1 * ((intermediate.x - center.y) <= 0 ? -1 : 1)).toFixed(2))
+			x: Number((-(event.clientY - rect.top - rect.height / 2) / 10).toFixed(2)),
+			y: Number(((event.clientX - rect.left - rect.width) / 10).toFixed(2))
 		};
 
 		rotateX.set(transform.x);

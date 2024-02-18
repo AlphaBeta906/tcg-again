@@ -106,10 +106,10 @@ export default function Card({ name, cost, category, effects, flavor, attack, de
 				</div>
 				<div className={`h-[176px] w-full border-4 rounded border-${cardColor}-400 bg-white p-2`}>
 					<div className="h-full flex flex-col gap-1">
-						<div className="h-3/4 overflow-auto">
+						<div className="h-[73%] overflow-auto">
 							{effectList}
 						</div>
-						<div className="h-1/4 pt-1 border-t border-t-black">
+						<div className="h-[27%] pt-1 border-t border-t-black">
 							<div className="text-[0.45rem] text-slate-700 italic">{flavor}</div>
 						</div>
 					</div>
